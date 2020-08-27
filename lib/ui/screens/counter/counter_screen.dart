@@ -1,3 +1,4 @@
+import 'package:bloc_example/ui/screens/counter/bloc/events.dart';
 import 'package:flutter/material.dart';
 import 'bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,7 +22,9 @@ class CounterScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 FloatingActionButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    CounterBloc.get(context).add(IncrementCounterValue());
+                  },
                   child: Icon(Icons.add),
                 ),
                 SizedBox(
@@ -35,7 +38,9 @@ class CounterScreen extends StatelessWidget {
                   width: 20.0,
                 ),
                 FloatingActionButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    CounterBloc.get(context).add(DecrementCounterValue());
+                  },
                   child: Icon(Icons.remove),
                 ),
               ],
