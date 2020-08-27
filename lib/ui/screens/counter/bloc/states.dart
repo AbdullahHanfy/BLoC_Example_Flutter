@@ -7,4 +7,8 @@ abstract class CounterStates {
 
 class InitialCounterState extends CounterStates {}
 
-class SuccessCounterState extends CounterStates {}
+class SuccessCounterState extends CounterStates {
+  final String type;
+
+  SuccessCounterState(this.type);
+}

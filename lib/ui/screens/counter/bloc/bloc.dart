@@ -1,6 +1,7 @@
 import 'package:bloc_example/ui/screens/counter/bloc/events.dart';
 import 'package:bloc_example/ui/screens/counter/bloc/states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter/cupertino.dart';
 
 class CounterBloc extends Bloc<CounterEvents, CounterStates> {
   CounterBloc(CounterStates initialState) : super(InitialCounterState());
@@ -10,7 +11,7 @@ class CounterBloc extends Bloc<CounterEvents, CounterStates> {
   /*  @override
   CounterStates get initialState => InitialCounterState();
  */
-
+  static CounterBloc get(BuildContext context) => BlocProvider.of(context);
   @override
   Stream<CounterStates> mapEventToState(CounterEvents event) async* {
     if (event is IncrementCounterValue) {
@@ -30,6 +31,6 @@ class CounterBloc extends Bloc<CounterEvents, CounterStates> {
         if (count != 0) count--;
         break;
     }
-    yield SuccessCounterState();
+    yield SuccessCounterState(s);
   }
 }
